@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Js-Calculator</title>
+</head>
+<body>
+    <div class="calculator-container">
+        <!-- calculator display are -->
+        <div class="calculator-display" id="display">0</div>
+
+        <!-- Buttons for numbers, operations, and functions -->
+        <div class="calculator-buttons">
+
+            <!-- row 1 -->
+            <button class="button function-button" data-action="clear">C</button>
+            <button class="button function-button" data-action="delete">DEL</button>
+            <button class="button operator-button" data-action="divide">/</button>
+            <button class="button operator-button" data-action="multiply">*</button>
+    
+            <!-- row 2 -->
+            <button class="button number-button" data-value="7"> 7 </button>
+            <button class="button number-button" data-value="8"> 8 </button>
+            <button class="button number-button" data-value="9"> 9 </button>
+            <button class="button operator-button" data-action="subtract"> - </button>
+    
+            <!-- row 3 -->
+            <button class="button number-button" data-value="4"> 4 </button>
+            <button class="button number-button" data-value="5"> 5 </button>
+            <button class="button number-button" data-value="6"> 6 </button>
+            <button class="button operator-button" data-action="add"> + </button>
+    
+            <!-- row 4 -->
+            <button class="button number-button" data-value="1"> 1 </button>
+            <button class="button number-button" data-value="2"> 2 </button>
+            <button class="button number-button" data-value="3"> 3 </button>
+            <button class="button equals-button" data-action="equals"> = </button>
+
+            <!-- row 5 -->
+            <button class="button number-button zero-button" data-value="0"> 0 </button>
+            <button class="button number-button" data-value="."> . </button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.calculator-container {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 18px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.calculator-header {
+    color: #fff;
+    font-family: inherit;
+    font-size: 1.0em;
+    font-weight: 400;
+    text-align: right;
+    margin-bottom: 8px;
+    padding: 0 8px;
+    opacity: 0.7;
+}
+
+.calculator-display {
+    background-color: #222;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.8em;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 8px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.calculator-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row-container {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+}
+
+.button {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 20px 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.number-button {
+    background-color: #555;
+}
+.operator-button {
+    background-color: #ff9500;
+}
+.function-button {
+    background-color: #a5a5a5;
+}
+.equals-button {
+    background-color: #ff9500;
+}
+
+.zero-button {
+    flex-grow: 2;
+    flex-basis: calc(50% -5px);
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 3;
+}
+
+.tall-button {
+    flex: 1;
+    height: auto;
+    min-height: 120px;
+}

@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Js-Calculator</title>
+    <title>Calculator App</title>
 </head>
 <body>
     <div class="calculator-container">
+        <h1 class="calculator-header">JIMMY</h1>
         <!-- calculator display are -->
         <div class="calculator-display" id="display">0</div>
 
         <!-- Buttons for numbers, operations, and functions -->
         <div class="calculator-buttons">
-
             <!-- row 1 -->
              <div class="row-container">
-                 <button class="button function-button" data-action="clear">C</button>
-                 <button class="button function-button" data-action="delete">DEL</button>
-                 <button class="button operator-button" data-action="divide">/</button>
-                 <button class="button operator-button" data-action="multiply">*</button>
+                 <button class="button function-button" data-action="clear"> C </button>
+                 <button class="button function-button" data-action="delete"> DEL </button>
+                 <button class="button operator-button" data-action="divide"> / </button>
+                 <button class="button operator-button" data-action="multiply"> * </button>
              </div>
     
             <!-- row 2 -->
@@ -39,21 +39,22 @@
                  <button class="button operator-button" data-action="add"> + </button>
              </div>
     
-            <!-- row 4 -->
+            <!-- row 4 & 5 with equals button spanning 2 rows -->
              <div class="row-container">
-                 <button class="button number-button" data-value="1"> 1 </button>
-                 <button class="button number-button" data-value="2"> 2 </button>
-                 <button class="button number-button" data-value="3"> 3 </button>
-                 <button class="button equals-button" data-action="equals"> = </button>
+                <div class="left-section">
+                    <div class="row-container">
+                        <button class="button number-button" data-value="1"> 1 </button>
+                        <button class="button number-button" data-value="2"> 2 </button>
+                        <button class="button number-button" data-value="3"> 3 </button>
+                    </div>
+                    <div class="row-container">
+                        <button class="button number-button zero-button" data-value="0"> 0 </button>
+                        <button class="button number-button" data-value="."> . </button>
+                    </div>
+                </div>
+                <button class="button equals-button tall-button" data-action="="> = </button>
              </div>
-
-            <!-- row 5 -->
-             <div class="row-container">
-                 <button class="button number-button zero-button" data-value="0"> 0 </button>
-                 <button class="button number-button" data-value="."> . </button>
-             </div>
-             </div>
-
+         </div>
     </div>
 
     <script src="script.js"></script>

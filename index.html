@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Js-Calculator</title>
 </head>
 <body>
@@ -16,33 +16,43 @@
         <div class="calculator-buttons">
 
             <!-- row 1 -->
-            <button class="button function-button" data-action="clear">C</button>
-            <button class="button function-button" data-action="delete">DEL</button>
-            <button class="button operator-button" data-action="divide">/</button>
-            <button class="button operator-button" data-action="multiply">*</button>
+             <div class="row-container">
+                 <button class="button function-button" data-action="clear">C</button>
+                 <button class="button function-button" data-action="delete">DEL</button>
+                 <button class="button operator-button" data-action="divide">/</button>
+                 <button class="button operator-button" data-action="multiply">*</button>
+             </div>
     
             <!-- row 2 -->
-            <button class="button number-button" data-value="7"> 7 </button>
-            <button class="button number-button" data-value="8"> 8 </button>
-            <button class="button number-button" data-value="9"> 9 </button>
-            <button class="button operator-button" data-action="subtract"> - </button>
+             <div class="row-container">
+                 <button class="button number-button" data-value="7"> 7 </button>
+                 <button class="button number-button" data-value="8"> 8 </button>
+                 <button class="button number-button" data-value="9"> 9 </button>
+                 <button class="button operator-button" data-action="subtract"> - </button>
+             </div>
     
             <!-- row 3 -->
-            <button class="button number-button" data-value="4"> 4 </button>
-            <button class="button number-button" data-value="5"> 5 </button>
-            <button class="button number-button" data-value="6"> 6 </button>
-            <button class="button operator-button" data-action="add"> + </button>
+             <div class="row-container">
+                 <button class="button number-button" data-value="4"> 4 </button>
+                 <button class="button number-button" data-value="5"> 5 </button>
+                 <button class="button number-button" data-value="6"> 6 </button>
+                 <button class="button operator-button" data-action="add"> + </button>
+             </div>
     
             <!-- row 4 -->
-            <button class="button number-button" data-value="1"> 1 </button>
-            <button class="button number-button" data-value="2"> 2 </button>
-            <button class="button number-button" data-value="3"> 3 </button>
-            <button class="button equals-button" data-action="equals"> = </button>
+             <div class="row-container">
+                 <button class="button number-button" data-value="1"> 1 </button>
+                 <button class="button number-button" data-value="2"> 2 </button>
+                 <button class="button number-button" data-value="3"> 3 </button>
+                 <button class="button equals-button" data-action="equals"> = </button>
+             </div>
 
             <!-- row 5 -->
-            <button class="button number-button zero-button" data-value="0"> 0 </button>
-            <button class="button number-button" data-value="."> . </button>
-        </div>
+             <div class="row-container">
+                 <button class="button number-button zero-button" data-value="0"> 0 </button>
+                 <button class="button number-button" data-value="."> . </button>
+             </div>
+             </div>
 
     </div>
 

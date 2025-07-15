@@ -3,34 +3,48 @@ let operator;
 let secondNumber;
 
 const add = (num1, num2) => {
-    return num1 + num2;
+    const result = num1 + num2;
+    return result;
 };
-
 
 const subtract = (num1, num2) => {
-    return num1 - num2;
+    const result = num1 - num2;
+    return result;
 };
-
 
 const multiply = (num1, num2) => {
-    return num1 * num2;
+    const result = num1 * num2;
+    return result;
 };
-
 
 const divide = (num1, num2) => {
     if (num2 === 0) {
         return 'ERROR';
     }
-    return num1 / num2;
+    const result = num1 / num2;
+    return result;
 };
 
-console.log(add(5, 5));
-console.log(subtract(5, 2));
-console.log(multiply(5, 5));
-console.log(divide(5, 5));
-console.log(divide(5, 0));
+const operate = (operator, num1, num2) => {
+    let result; 
 
-
-const operate = () => {
-
+    switch (operator) {
+        case '+':
+            result = add(num1, num2);
+            break;
+        case '-':
+            result = subtract(num1, num2);
+            break;
+        case '*':
+            result = multiply(num1, num2);
+            break;
+        case '/':
+            result = divide(num1, num2);
+            break;
+    }
+    if (result === 'ERROR') {
+        return result;
+    } else {
+        return parseFloat(result.toFixed(8));
+    }
 }

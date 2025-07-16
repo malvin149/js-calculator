@@ -11,7 +11,7 @@ const display = document.getElementById('display');
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equalsButton = document.querySelector('.equals-button');
-// const clearButton = document.querySelector('[data-action="clear"]')
+const clearButton = document.querySelector('[data-action="clear"]')
 
 
 
@@ -185,10 +185,10 @@ equalsButton.addEventListener('click', (event) => {
     shouldClearDisplay = true;
 })
 
-// clearButton.addEventListener('click', (event) => {
-//    resetCalculatorState();
-//    updateDisplay('0');
-// })
+clearButton.addEventListener('click', (event) => {
+   resetCalculatorState();
+   updateDisplay('0');
+})
 
 // initial Call on load
 updateDisplay(displayValue);

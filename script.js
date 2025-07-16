@@ -109,7 +109,7 @@ operatorButtons.forEach(button => {
         const nextOperator = event.target.dataset.action;
         
         
-        if (firstNumber === null) {
+        if (operator === null) {
             firstNumber = parseFloat(displayValue);
             operator = nextOperator;
             waitingForSecondNumber = true;
@@ -150,7 +150,38 @@ operatorButtons.forEach(button => {
 })
 
 
-equalsButton.addEventListener('click', {})
+equalsButton.addEventListener('click', (event) => {
+
+    if (firstNumber === null || operator === null) {
+        return;
+    }
+
+    secondNumber = parseFloat(displayValue);
+    console.log('EQUALS CALCULATION:', {firstNumber, operator, secondNumber});
+    
+    
+    let result = operate(operator, firstNumber, secondNumber);
+    console.log('EQUALS RESULT:', result);
+    
+    if (result === 'ERROR') {
+        displayValue = 'ERROR';
+        firstNumber = null;
+        secondNumber = null; 
+        displayValue = '0'
+        shouldClearDisplay = false;
+        waitingForSecondNumber = false;
+        return;
+    }
+
+    updateDisplay(result);
+
+    firstNumber = result;
+    operator = null;
+    secondNumber = null;
+    displayValue = result.toString();
+    waitingForSecondNumber = false;
+    shouldClearDisplay = true;
+})
 
 // initial Call on load
 updateDisplay(displayValue);

@@ -11,7 +11,8 @@ const display = document.getElementById('display');
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equalsButton = document.querySelector('.equals-button');
-const clearButton = document.querySelector('[data-action="clear"]')
+const clearButton = document.querySelector('[data-action="clear"]');
+const deleteButton = document.querySelector('[data-action="delete"]');
 
 
 
@@ -47,7 +48,7 @@ const multiply = (firstNumber, secondNumber) => {
 
 const divide = (firstNumber, secondNumber) => {
     if (secondNumber === 0) {
-        return 'ERROR';
+        return 'Math Error';
     }
     const result = firstNumber / secondNumber;
     return result;
@@ -76,11 +77,11 @@ const operate = (operator, firstNumber, secondNumber) => {
             result = divide(firstNumber, secondNumber);
             break;
         default:
-            result = 'ERROR';
+            result = 'Math Error';
             break;
     }
 
-    if (result === 'ERROR') {
+    if (result === 'Math Error') {
         return result;
     } else {
         return parseFloat(result.toFixed(8));
@@ -124,9 +125,11 @@ operatorButtons.forEach(button => {
             operator = nextOperator;
             waitingForSecondNumber = true;
             shouldClearDisplay = true;
+
         } else if (waitingForSecondNumber) {
             operator = nextOperator;
             shouldClearDisplay = true;
+
         } else {
             secondNumber = parseFloat(displayValue);
 
@@ -138,8 +141,8 @@ operatorButtons.forEach(button => {
             
             
             // handle division by zero error
-            if (result === 'ERROR') {
-                updateDisplay('ERROR');
+            if (result === 'Math Error') {
+                updateDisplay('Math Error');
                 resetCalculatorState();
                 return;
             }
@@ -169,8 +172,8 @@ equalsButton.addEventListener('click', (event) => {
     let result = operate(operator, firstNumber, secondNumber);
     console.log('EQUALS RESULT:', result);
     
-    if (result === 'ERROR') {
-        displayValue = 'ERROR';
+    if (result === 'Math Error') {
+        updateDisplay('Math Error');
         resetCalculatorState();
         return;
     }
@@ -188,6 +191,21 @@ equalsButton.addEventListener('click', (event) => {
 clearButton.addEventListener('click', (event) => {
    resetCalculatorState();
    updateDisplay('0');
+})
+
+deleteButton.addEventListener('click', (event) => {
+    if (displayValue === 'Math Error') {
+        resetCalculatorState();
+        updateDisplay('0');
+        return;
+    }
+
+    if (displayValue !== '0') {
+        displayValue = displayValue.slice(0, -1);
+
+        if (displayValue === '') displayValue = '0';
+    }
+    updateDisplay(displayValue);
 })
 
 // initial Call on load

@@ -11,12 +11,22 @@ const display = document.getElementById('display');
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equalsButton = document.querySelector('.equals-button');
+// const clearButton = document.querySelector('[data-action="clear"]')
 
 
 
 // Helper function
 const updateDisplay = (value) => {
     display.textContent = value;
+}
+
+const resetCalculatorState = () => {
+    firstNumber = null; 
+    operator = null; 
+    secondNumber = null; 
+    displayValue = '0'; 
+    waitingForSecondNumber = false;
+    shouldClearDisplay = false;
 }
 
 // Basic arithmetic Funtions
@@ -130,11 +140,7 @@ operatorButtons.forEach(button => {
             // handle division by zero error
             if (result === 'ERROR') {
                 updateDisplay('ERROR');
-                firstNumber = null;
-                secondNumber = null; 
-                displayValue = '0';
-                waitingForSecondNumber = false;
-                shouldClearDisplay = false;
+                resetCalculatorState();
                 return;
             }
             firstNumber = result;
@@ -165,11 +171,7 @@ equalsButton.addEventListener('click', (event) => {
     
     if (result === 'ERROR') {
         displayValue = 'ERROR';
-        firstNumber = null;
-        secondNumber = null; 
-        displayValue = '0'
-        shouldClearDisplay = false;
-        waitingForSecondNumber = false;
+        resetCalculatorState();
         return;
     }
 
@@ -182,6 +184,11 @@ equalsButton.addEventListener('click', (event) => {
     waitingForSecondNumber = false;
     shouldClearDisplay = true;
 })
+
+// clearButton.addEventListener('click', (event) => {
+//    resetCalculatorState();
+//    updateDisplay('0');
+// })
 
 // initial Call on load
 updateDisplay(displayValue);

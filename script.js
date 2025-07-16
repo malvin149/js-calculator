@@ -161,7 +161,8 @@ operatorButtons.forEach(button => {
 
 equalsButton.addEventListener('click', (event) => {
 
-    if (firstNumber === null || operator === null) {
+    if (firstNumber === null || operator === null || waitingForSecondNumber) {
+        console.log('EQUALS - Invalid operation: Missing first number, operator, or second number.');
         return;
     }
 
@@ -186,6 +187,8 @@ equalsButton.addEventListener('click', (event) => {
     displayValue = result.toString();
     waitingForSecondNumber = false;
     shouldClearDisplay = true;
+    console.log('successfully calculation', {shouldClearDisplay});
+    
 })
 
 clearButton.addEventListener('click', (event) => {

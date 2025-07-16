@@ -211,5 +211,53 @@ deleteButton.addEventListener('click', (event) => {
     updateDisplay(displayValue);
 })
 
+window.addEventListener('keydown', (event) => {
+    const key = event.key
+
+    if (key >= '0' && key <= '9' || key === '.') {
+        const button = document.querySelector(`[data-value="${key}"]`);
+        if (button) {
+            button.click();
+        }
+    }
+    else if (key === '+') {
+        const button = document.querySelector(`[data-action="add"]`);
+        if (button) {
+            button.click();
+        }
+    }
+    else if (key === '-') {
+        const button = document.querySelector(`[data-action="subtract"]`);
+        if (button) {
+            button.click();
+        }
+    }
+    else if (key === '*') {
+        const button = document.querySelector(`[data-action="multiply"]`);
+        if (button) {
+            button.click();
+        }
+    }
+    else if (key === '/') {
+        event.preventDefault()
+        const button = document.querySelector(`[data-action="divide"]`);
+        if (button) {
+            button.click();
+        }
+    }
+    else if (key === '=' || key === 'Enter') {
+        event.preventDefault();
+        equalsButton.click();
+    }
+    else if (key === 'c' || key === 'C' || key === 'Escape') {
+        event.preventDefault()
+        clearButton.click();
+    }
+    else if (key === 'Backspace') {
+        event.preventDefault();
+        deleteButton.click();
+    }
+})
+
 // initial Call on load
 updateDisplay(displayValue);

@@ -10,6 +10,7 @@ let shouldClearDisplay = false;
 const display = document.getElementById('display');
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
+const equalsButton = document.querySelector('.equals-button');
 
 
 
@@ -147,7 +148,9 @@ operatorButtons.forEach(button => {
         
     })
 })
-    
+
+
+equalsButton.addEventListener('click', {})
 
 // initial Call on load
 updateDisplay(displayValue);

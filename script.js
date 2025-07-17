@@ -19,7 +19,15 @@ const deleteButton = document.querySelector('[data-action="delete"]');
 // HELPER FUNCTIONS 
 // Update display value on the calculator
 const updateDisplay = (value) => {
-    display.textContent = value;
+    let displayString = value.toString(); // Ensure the value is a string
+    const MAX_DISPLAY_LENGTH = 12
+
+    // Checks if the value is a number (not "Math Error") && its string representation exceeds the maximum display length, show 'OVERFLOW'.
+    if(!isNaN(parseFloat(displayString)) && displayString.length > MAX_DISPLAY_LENGTH) {
+        display.textContent = 'OVERFLOW'; // Display the overflow message.
+        return; // Stop execution
+    }
+    display.textContent = displayString; // Display the number as if it fits.
 };
 
 // Reset calculator state to global variable state

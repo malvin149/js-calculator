@@ -1,4 +1,9 @@
+const btnContainer = document.querySelector('.btn-container');
+
 const operate = (operator, firstNumber, secondNumber) => {
+
+    firstNumber = Number(firstNumber);
+    secondNumber = Number(secondNumber);
     switch (operator) {
         case '+':
             return add(firstNumber, secondNumber);
@@ -21,3 +26,7 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => {
     return (b === 0) ? `Error` : a / b;
 };
+
+btnContainer.addEventListener('click', (e) => {
+    console.log(e.target.textContent);
+})

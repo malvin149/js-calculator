@@ -34,7 +34,6 @@ const divide = (a, b) => {
 const gateKeeper = () => firstNumber !== null && operator !== null && secondNumber !== null;
 
 btnContainer.addEventListener('click', (e) => {
-    // console.log(e.target.textContent);
     if (e.target.classList.contains('digit-btn')) {
         if (operator === null) {
             (firstNumber === null)
@@ -58,6 +57,15 @@ btnContainer.addEventListener('click', (e) => {
             secondNumber = null;
         } else {
             operator = e.target.textContent;
+        }
+    }
+    if (e.target.classList.contains('equals-btn')) {
+        if (gateKeeper()) {
+            let result = operate(operator, firstNumber, secondNumber);
+            firstNumber = result;
+            operator = null;
+            secondNumber = null;
+            displayDiv.textContent = result;
         }
     }
 })

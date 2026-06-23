@@ -6,6 +6,8 @@ let operator = null;
 let secondNumber = null;
 
 const operate = (op, num1, num2) => {
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch (op) {
         case '+':
             return add(num1, num2);
@@ -29,20 +31,33 @@ const divide = (a, b) => {
     return (b === 0) ? `Error` : a / b;
 };
 
+const gateKeeper = () => firstNumber !== null && operator !== null && secondNumber !== null;
+
 btnContainer.addEventListener('click', (e) => {
-    console.log(e.target.textContent);
-    if(e.target.classList.contains('digit-btn')) {
-        if(operator === null) {
+    // console.log(e.target.textContent);
+    if (e.target.classList.contains('digit-btn')) {
+        if (operator === null) {
             (firstNumber === null)
             ? firstNumber = e.target.textContent
             : firstNumber += e.target.textContent;
             displayDiv.textContent = firstNumber;
         }
-        if(operator !== null) {
+        if (operator !== null) {
             (secondNumber === null)
             ? secondNumber = e.target.textContent
             : secondNumber += e.target.textContent;
-            displayDiv.textContent = secondNumber
+            displayDiv.textContent = secondNumber;
+        }
+    }
+    if (e.target.classList.contains('operators')) {
+        if (gateKeeper()) {
+            let result = operate(operator, firstNumber, secondNumber);
+            firstNumber = result;
+            displayDiv.textContent = firstNumber;
+            operator = e.target.textContent;
+            secondNumber = null;
+        } else {
+            operator = e.target.textContent;
         }
     }
 })

@@ -68,4 +68,10 @@ btnContainer.addEventListener('click', (e) => {
             displayDiv.textContent = result;
         }
     }
+    if (e.target.classList.contains('clear-btn')) {
+        firstNumber = null;
+        operator = null;
+        secondNumber = null;
+        displayDiv.textContent = '0';
+    }
 })

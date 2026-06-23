@@ -6,9 +6,6 @@ let operator = null;
 let secondNumber = null;
 
 const operate = (op, num1, num2) => {
-
-    let num1 = Number(num1);
-    let num2 = Number(num2);
     switch (op) {
         case '+':
             return add(num1, num2);

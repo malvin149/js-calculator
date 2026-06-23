@@ -1,21 +1,26 @@
 const btnContainer = document.querySelector('.btn-container');
+const displayDiv = document.querySelector('.display');
 
-const operate = (operator, firstNumber, secondNumber) => {
+let firstNumber = null;
+let operator = null;
+let secondNumber = null;
 
-    firstNumber = Number(firstNumber);
-    secondNumber = Number(secondNumber);
-    switch (operator) {
+const operate = (op, num1, num2) => {
+
+    let num1 = Number(num1);
+    let num2 = Number(num2);
+    switch (op) {
         case '+':
-            return add(firstNumber, secondNumber);
+            return add(num1, num2);
             break;
         case '-':
-            return subtract(firstNumber, secondNumber);
+            return subtract(num1, num2);
             break;
         case '*':
-            return multiply(firstNumber, secondNumber);
+            return multiply(num1, num2);
             break;
         case '/':
-            return divide(firstNumber, secondNumber);
+            return divide(num1, num2);
         break;
     }
 }
@@ -29,4 +34,18 @@ const divide = (a, b) => {
 
 btnContainer.addEventListener('click', (e) => {
     console.log(e.target.textContent);
+    if(e.target.classList.contains('digit-btn')) {
+        if(operator === null) {
+            (firstNumber === null)
+            ? firstNumber = e.target.textContent
+            : firstNumber += e.target.textContent;
+            displayDiv.textContent = firstNumber;
+        }
+        if(operator !== null) {
+            (secondNumber === null)
+            ? secondNumber = e.target.textContent
+            : secondNumber += e.target.textContent;
+            displayDiv.textContent = secondNumber
+        }
+    }
 })

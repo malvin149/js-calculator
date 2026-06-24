@@ -74,4 +74,22 @@ btnContainer.addEventListener('click', (e) => {
         secondNumber = null;
         displayDiv.textContent = '0';
     }
+    if (e.target.classList.contains('decimal-btn')) {
+        if (operator === null) {
+           if (firstNumber === null) {
+            firstNumber = '0.';
+           } else if (!firstNumber.includes('.')) {
+            firstNumber += '.'
+           }
+           displayDiv.textContent = firstNumber;
+        }
+        if (operator !== null) {
+           if (secondNumber === null) {
+            secondNumber = '0.';
+           } else if (!secondNumber.includes('.')) {
+            secondNumber += '.'
+           }
+           displayDiv.textContent = secondNumber;
+        }
+    }
 })

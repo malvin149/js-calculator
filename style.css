@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400&display=swap');
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #1a1a2e;
+    --calculator-bg: #1e3a5f;
+    --display-bg: #0f1f3d;
+    --digit-btn: #2d2b55;
+    --operator-btn: #0f3460;
+    --equals-btn: #3883f6;
+    --clear-btn: #c0392b;
+    --delete-btn: #2d2b55;
+    --text-primary: #f9faf8;
+    --text-muted: rgba(249, 250, 248, 0.4);
+    --radius: 8px;
+    --btn-radius: 12px;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--calculator-bg);
+    width: 320px;
+    border-radius: var(--radius);
+    padding: 16px 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.display-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    font-family: 'Roboto Mono';
+    background-color: var(--display-bg);
+    text-align: right;
+    min-height: 64px;
+    padding: 8px 12px;
+    border-radius: var(--btn-radius);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    padding: 8px 4px 4px 4px;
+    letter-spacing: 2px;
+}
+
+.btn-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+button {
+    background-color: var(--digit-btn);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 23%;
+    padding: 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--btn-radius);
+    cursor: pointer;
+}
+
+.operator-btn {
+    background-color: var(--operator-btn);
+}
+
+.equals-btn {
+    background-color: var(--equals-btn);
+    height: 50%;
+    align-self: stretch;
+}
+
+.clear-btn {
+    background-color: var(--clear-btn);
+}
+
+.zero-btn {
+    width: 50%;
+}

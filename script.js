@@ -1,9 +1,10 @@
-const btnContainer = document.querySelector('.btn-container');
-const displayDiv = document.querySelector('.display');
+const buttonPanel = document.querySelector('.btn-panel');
+const display = document.querySelector('.display');
 
-let firstNumber = null;
-let operator = null;
-let secondNumber = null;
+let firstOperand = null;
+let currentOperator = null;
+let secondOperand = null;
+let justCalculated = false;
 
 const operate = (op, num1, num2) => {
     num1 = Number(num1);
@@ -31,65 +32,71 @@ const divide = (a, b) => {
     return (b === 0) ? `Error` : a / b;
 };
 
-const gateKeeper = () => firstNumber !== null && operator !== null && secondNumber !== null;
+const gateKeeper = () => firstOperand !== null && currentOperator !== null && secondOperand !== null;
 
-btnContainer.addEventListener('click', (e) => {
+buttonPanel.addEventListener('click', (e) => {
     if (e.target.classList.contains('digit-btn')) {
-        if (operator === null) {
-            (firstNumber === null)
-            ? firstNumber = e.target.textContent
-            : firstNumber += e.target.textContent;
-            displayDiv.textContent = firstNumber;
+        if (justCalculated === true) {
+            firstOperand = null;
+            justCalculated = false;
         }
-        if (operator !== null) {
-            (secondNumber === null)
-            ? secondNumber = e.target.textContent
-            : secondNumber += e.target.textContent;
-            displayDiv.textContent = secondNumber;
+        if (currentOperator === null) {
+            (firstOperand === null)
+            ? firstOperand = e.target.textContent
+            : firstOperand += e.target.textContent;
+            display.textContent = firstOperand;
+        }
+        if (currentOperator !== null) {
+            (secondOperand === null)
+            ? secondOperand = e.target.textContent
+            : secondOperand += e.target.textContent;
+            display.textContent = secondOperand;
         }
     }
-    if (e.target.classList.contains('operators')) {
+    if (e.target.classList.contains('operator-btn')) {
+        justCalculated = false;
         if (gateKeeper()) {
-            let result = operate(operator, firstNumber, secondNumber);
-            firstNumber = result;
-            displayDiv.textContent = firstNumber;
-            operator = e.target.textContent;
-            secondNumber = null;
+            let result = operate(currentOperator, firstOperand, secondOperand);
+            firstOperand = result;
+            display.textContent = firstOperand;
+            currentOperator = e.target.textContent;
+            secondOperand = null;
         } else {
-            operator = e.target.textContent;
+            currentOperator = e.target.textContent;
         }
     }
     if (e.target.classList.contains('equals-btn')) {
         if (gateKeeper()) {
-            let result = operate(operator, firstNumber, secondNumber);
-            firstNumber = result;
-            operator = null;
-            secondNumber = null;
-            displayDiv.textContent = result;
+            let result = operate(currentOperator, firstOperand, secondOperand);
+            firstOperand = result;
+            currentOperator = null;
+            secondOperand = null;
+            display.textContent = result;
+            justCalculated = true;
         }
     }
     if (e.target.classList.contains('clear-btn')) {
-        firstNumber = null;
-        operator = null;
-        secondNumber = null;
-        displayDiv.textContent = '0';
+        firstOperand = null;
+        currentOperator = null;
+        secondOperand = null;
+        display.textContent = '0';
     }
     if (e.target.classList.contains('decimal-btn')) {
-        if (operator === null) {
-           if (firstNumber === null) {
-            firstNumber = '0.';
-           } else if (!firstNumber.includes('.')) {
-            firstNumber += '.'
+        if (currentOperator === null) {
+           if (firstOperand === null) {
+            firstOperand = '0.';
+           } else if (!firstOperand.includes('.')) {
+            firstOperand += '.'
            }
-           displayDiv.textContent = firstNumber;
+           display.textContent = firstOperand;
         }
-        if (operator !== null) {
-           if (secondNumber === null) {
-            secondNumber = '0.';
-           } else if (!secondNumber.includes('.')) {
-            secondNumber += '.'
+        if (currentOperator !== null) {
+           if (secondOperand === null) {
+            secondOperand = '0.';
+           } else if (!secondOperand.includes('.')) {
+            secondOperand += '.'
            }
-           displayDiv.textContent = secondNumber;
+           display.textContent = secondOperand;
         }
     }
 })

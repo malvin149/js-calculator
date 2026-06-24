@@ -6,6 +6,13 @@ let currentOperator = null;
 let secondOperand = null;
 let justCalculated = false;
 
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => {
+    return (b === 0) ? `Error` : a / b;
+};
+
 const operate = (op, num1, num2) => {
     num1 = Number(num1);
     num2 = Number(num2);
@@ -24,13 +31,6 @@ const operate = (op, num1, num2) => {
         break;
     }
 }
-
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => {
-    return (b === 0) ? `Error` : a / b;
-};
 
 const gateKeeper = () => firstOperand !== null && currentOperator !== null && secondOperand !== null;
 
@@ -52,8 +52,7 @@ buttonPanel.addEventListener('click', (e) => {
             : secondOperand += e.target.textContent;
             display.textContent = secondOperand;
         }
-    }
-    if (e.target.classList.contains('operator-btn')) {
+    } else if (e.target.classList.contains('operator-btn')) {
         justCalculated = false;
         if (gateKeeper()) {
             let result = operate(currentOperator, firstOperand, secondOperand);
@@ -64,8 +63,7 @@ buttonPanel.addEventListener('click', (e) => {
         } else {
             currentOperator = e.target.textContent;
         }
-    }
-    if (e.target.classList.contains('equals-btn')) {
+    } else if (e.target.classList.contains('equals-btn')) {
         if (gateKeeper()) {
             let result = operate(currentOperator, firstOperand, secondOperand);
             firstOperand = result;
@@ -74,14 +72,12 @@ buttonPanel.addEventListener('click', (e) => {
             display.textContent = result;
             justCalculated = true;
         }
-    }
-    if (e.target.classList.contains('clear-btn')) {
+    } else if (e.target.classList.contains('clear-btn')) {
         firstOperand = null;
         currentOperator = null;
         secondOperand = null;
         display.textContent = '0';
-    }
-    if (e.target.classList.contains('decimal-btn')) {
+    } else if (e.target.classList.contains('decimal-btn')) {
         if (currentOperator === null) {
            if (firstOperand === null) {
             firstOperand = '0.';

@@ -34,6 +34,13 @@ const operate = (op, num1, num2) => {
 
 const gateKeeper = () => firstOperand !== null && currentOperator !== null && secondOperand !== null;
 
+const reset = () => {
+    firstOperand = null;
+    currentOperator = null;
+    secondOperand = null;
+    display.textContent = '0';
+}
+
 buttonPanel.addEventListener('click', (e) => {
     if (e.target.classList.contains('digit-btn')) {
         if (justCalculated === true) {
@@ -57,9 +64,13 @@ buttonPanel.addEventListener('click', (e) => {
         if (gateKeeper()) {
             let result = operate(currentOperator, firstOperand, secondOperand);
             firstOperand = result;
-            display.textContent = firstOperand;
-            currentOperator = e.target.textContent;
-            secondOperand = null;
+            if (result === 'Error') {
+                reset();
+            } else {
+                display.textContent = parseFloat(firstOperand.toPrecision(10))
+                currentOperator = e.target.textContent;
+                secondOperand = null;
+            }
         } else {
             currentOperator = e.target.textContent;
         }
@@ -69,14 +80,11 @@ buttonPanel.addEventListener('click', (e) => {
             firstOperand = result;
             currentOperator = null;
             secondOperand = null;
-            display.textContent = result;
+            result === 'Error' ? reset() : display.textContent = parseFloat(result.toPrecision(10));
             justCalculated = true;
         }
     } else if (e.target.classList.contains('clear-btn')) {
-        firstOperand = null;
-        currentOperator = null;
-        secondOperand = null;
-        display.textContent = '0';
+        reset();
     } else if (e.target.classList.contains('decimal-btn')) {
         if (currentOperator === null) {
            if (firstOperand === null) {

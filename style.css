@@ -92,6 +92,10 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    filter: brightness(0.92);
+}
+
 .operator-btn {
     background-color: var(--operator-btn);
 }

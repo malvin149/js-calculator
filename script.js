@@ -39,6 +39,16 @@ const reset = () => {
     display.textContent = '0';
 }
 
+const adjustFontSize  = () => {
+    if (display.textContent.length <= 9) {
+        display.style.fontSize = '1.75rem';
+    } else if (display.textContent.length <= 12) {
+        display.style.fontSize = '1.25rem';
+    } else {
+        display.style.fontSize = '1rem';
+    }
+};
+
 buttonPanel.addEventListener('click', (e) => {
     if (e.target.classList.contains('digit-btn')) {
         if (justCalculated === true) {
@@ -134,6 +144,7 @@ buttonPanel.addEventListener('click', (e) => {
     }
     // Fall back to '0' if the operand is null or undefined
     display.textContent = secondOperand === null ? firstOperand ?? '0' : secondOperand;
+    adjustFontSize();
 })
 
 
@@ -149,3 +160,4 @@ document.addEventListener('keydown', (e) => {
 
     if (matchingBtn) matchingBtn.click();
 })
+

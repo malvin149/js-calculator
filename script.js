@@ -4,6 +4,7 @@ const display = document.querySelector('.display');
 let firstOperand = null;
 let currentOperator = null;
 let secondOperand = null;
+// prevent new digits from appending to a finished result
 let justCalculated = false;
 
 const add = (a, b) => a + b;
@@ -19,19 +20,16 @@ const operate = (op, num1, num2) => {
     switch (op) {
         case '+':
             return add(num1, num2);
-            break;
         case '-':
             return subtract(num1, num2);
-            break;
         case '*':
             return multiply(num1, num2);
-            break;
         case '/':
             return divide(num1, num2);
-        break;
     }
 }
 
+// Ensure all three variables are present before attempting a calculation
 const gateKeeper = () => firstOperand !== null && currentOperator !== null && secondOperand !== null;
 
 const reset = () => {
@@ -51,13 +49,10 @@ buttonPanel.addEventListener('click', (e) => {
             (firstOperand === null)
             ? firstOperand = e.target.textContent
             : firstOperand += e.target.textContent;
-            display.textContent = firstOperand;
-        }
-        if (currentOperator !== null) {
+        } else {
             (secondOperand === null)
             ? secondOperand = e.target.textContent
             : secondOperand += e.target.textContent;
-            display.textContent = secondOperand;
         }
     } else if (e.target.classList.contains('operator-btn')) {
         justCalculated = false;
@@ -67,6 +62,7 @@ buttonPanel.addEventListener('click', (e) => {
             if (result === 'Error') {
                 reset();
             } else {
+                // trims floating point results to avoid long trailing decimals
                 display.textContent = parseFloat(firstOperand.toPrecision(10))
                 currentOperator = e.target.textContent;
                 secondOperand = null;
@@ -92,15 +88,50 @@ buttonPanel.addEventListener('click', (e) => {
            } else if (!firstOperand.includes('.')) {
             firstOperand += '.'
            }
-           display.textContent = firstOperand;
-        }
-        if (currentOperator !== null) {
+        } else {
            if (secondOperand === null) {
             secondOperand = '0.';
            } else if (!secondOperand.includes('.')) {
             secondOperand += '.'
            }
-           display.textContent = secondOperand;
+        }
+    } else if (e.target.classList.contains('double-zero-btn')) {
+        if (justCalculated === true) {
+            firstOperand = null;
+            justCalculated = false;
+        }
+        if (currentOperator === null) {
+            if (firstOperand === null) firstOperand = e.target.textContent;
+            else if (firstOperand === '0') firstOperand = '0';
+            else firstOperand += e.target.textContent; 
+        } else {
+            if (secondOperand === null) secondOperand = e.target.textContent;
+            else if (secondOperand === '0') secondOperand = '0';
+            else secondOperand += e.target.textContent; 
+        }
+    } else if (e.target.classList.contains('sign-btn')) {
+        if (justCalculated === true) {
+            firstOperand = null;
+            justCalculated = false;
+        }
+        if (currentOperator === null) {
+            if (firstOperand === null) return 
+            else firstOperand = firstOperand.startsWith('-') ? firstOperand.slice(1) : '-' + firstOperand;
+        } else {
+            if (secondOperand === null) return
+            else secondOperand = secondOperand.startsWith('-') ? secondOperand.slice(1) : '-' + secondOperand;
+        }
+    } else if (e.target.classList.contains('delete-btn')) {
+        if (currentOperator === null) {
+            if (firstOperand === null) return;
+            else if (firstOperand.length === 1) firstOperand = null; 
+            else firstOperand = firstOperand.slice(0, -1);
+        } else {
+            if (secondOperand === null) return;
+            else if (secondOperand.length === 1) secondOperand = null; 
+            else secondOperand = secondOperand.slice(0, -1);
         }
     }
+    // Fall back to '0' if the operand is null or undefined
+    display.textContent = secondOperand === null ? firstOperand ?? '0' : secondOperand;
 })

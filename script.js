@@ -135,3 +135,17 @@ buttonPanel.addEventListener('click', (e) => {
     // Fall back to '0' if the operand is null or undefined
     display.textContent = secondOperand === null ? firstOperand ?? '0' : secondOperand;
 })
+
+
+document.addEventListener('keydown', (e) => {
+    // map special keys to their button equivalent
+    let key = e.key;
+    if (key === 'Enter') key = '=';
+    if (key === 'Backspace') key = '⌫';
+    if (key === 'Escape') key = 'AC';
+
+    // find matching button and click it if it exists
+    const matchingBtn = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent === key);
+
+    if (matchingBtn) matchingBtn.click();
+})

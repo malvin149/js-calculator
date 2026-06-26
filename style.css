@@ -10,17 +10,18 @@
 }
 
 :root {
-    --bg: #1a1a2e;
-    --calculator-bg: #1e3a5f;
-    --display-bg: #0f1f3d;
-    --digit-btn: #2d2b55;
-    --operator-btn: #0f3460;
+    --bg: #f0f2f5;
+    --calculator-bg: #e8eaed;
+    --display-bg: #fff;
+    --digit-btn: #e0e0e0;
+    --operator-btn: #d0d0d0;
     --equals-btn: #3883f6;
-    --clear-btn: #c0392b;
-    --delete-btn: #2d2b55;
-    --text-primary: #f9faf8;
-    --text-muted: rgba(249, 250, 248, 0.4);
-    --radius: 8px;
+    --clear-btn: #e63946;
+    --delete-btn: #d0d0d0;
+    --sign-btn: #d0d0d0;
+    --text-primary: #1a1a2e;
+    --text-muted: rgba(26, 26, 46, 0.4);
+    --radius: 16px;
     --btn-radius: 12px;
 }
 
@@ -49,14 +50,17 @@ body {
 }
 
 .display {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     font-family: 'Roboto Mono';
     background-color: var(--display-bg);
     text-align: right;
-    min-height: 64px;
+    min-height: 96px;
     padding: 8px 12px;
     border-radius: var(--btn-radius);
     color: var(--text-primary);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
 }
 
 .brand {
@@ -79,7 +83,7 @@ button {
     background-color: var(--digit-btn);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 600;
     width: 23%;
     padding: 12px 0;
@@ -102,6 +106,10 @@ button {
     background-color: var(--clear-btn);
 }
 
-.zero-btn {
-    width: 50%;
+.site-footer {
+    background-color: transparent;
+    color: var(--text-muted);
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
 }

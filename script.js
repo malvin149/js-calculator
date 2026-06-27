@@ -1,12 +1,15 @@
+/* ––– DOM References ––– */
 const buttonPanel = document.querySelector('.btn-panel');
 const display = document.querySelector('.display');
 
+/* ––– State ––– */
 let firstOperand = null;
 let currentOperator = null;
 let secondOperand = null;
 // prevent new digits from appending to a finished result
 let justCalculated = false;
 
+/* ––– Math Helpers ––– */
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -14,6 +17,7 @@ const divide = (a, b) => {
     return (b === 0) ? `Error` : a / b;
 };
 
+/* ––– Core Logic ––– */
 const operate = (op, num1, num2) => {
     num1 = Number(num1);
     num2 = Number(num2);
@@ -49,6 +53,7 @@ const adjustFontSize  = () => {
     }
 };
 
+/* ––– Event Listeners ––– */
 buttonPanel.addEventListener('click', (e) => {
     if (e.target.classList.contains('digit-btn')) {
         if (justCalculated === true) {
@@ -146,7 +151,6 @@ buttonPanel.addEventListener('click', (e) => {
     display.textContent = secondOperand === null ? firstOperand ?? '0' : secondOperand;
     adjustFontSize();
 })
-
 
 document.addEventListener('keydown', (e) => {
     // map special keys to their button equivalent
